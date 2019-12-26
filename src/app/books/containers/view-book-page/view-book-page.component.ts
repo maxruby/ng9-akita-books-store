@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BooksService } from '../state/books.service';
+import { BooksService } from '../../state/books.service';
 
 @Component({
   selector: 'app-view-book-page',
