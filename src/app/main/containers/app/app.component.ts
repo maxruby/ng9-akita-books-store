@@ -2,9 +2,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthQuery } from '../../../auth/state/auth.query';
 import { AuthService } from '../../../auth/state/auth.service';
-import { LayoutQuery } from '../state/layout.query';
-import { LayoutService } from '../state/layout.service';
-import { BooksService } from '../../books/state/books.service';
+import { LayoutQuery } from '../../state/layout.query';
+import { LayoutService } from '../../state/layout.service';
+import { BooksService } from '../../../books/state/books.service';
 
 @Component({
   selector: 'app-root',

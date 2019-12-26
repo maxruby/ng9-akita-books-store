@@ -17,8 +17,8 @@ export class BooksQuery extends QueryEntity<BooksState, Book> {
 
   isInCollection$ = this.selectCollection$.pipe(map(ids => ids.includes(this.getActiveId()) === true));
 
-  get getSearchTerm(): ID[] {
-    return this.snapshotManager.getStoresSnapshot(['searchTerm']) as Array<ID>;
+  get getSearchTerm(): string {
+    return this.snapshotManager.getStoresSnapshot(['searchTerm']) as string;
   }
   
   get collection(): ID[] {
