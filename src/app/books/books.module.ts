@@ -9,13 +9,14 @@ import { CollectionPageComponent } from './containers/collection-page/collection
 import { FindBookComponent } from './containers/find-book/find-book.component';
 import { SelectedBookPageComponent } from './containers/selected-book-page/selected-book-page.component';
 import { ViewBookPageComponent } from './containers/view-book-page/view-book-page.component';
+import { SnapshotManager } from '@datorama/akita';
 
 @NgModule({
   declarations: [ 
-  CollectionPageComponent,
-  FindBookComponent,
-  SelectedBookPageComponent,
-  ViewBookPageComponent
+    CollectionPageComponent,
+    FindBookComponent,
+    SelectedBookPageComponent,
+    ViewBookPageComponent
   ],
   imports: [
     CommonModule,
@@ -23,6 +24,6 @@ import { ViewBookPageComponent } from './containers/view-book-page/view-book-pag
     BooksComponentModule,
     MaterialModule
   ],
-  providers: [ BooksGuard ]
+  providers: [ BooksGuard, SnapshotManager ]
 })
 export class BooksModule { }

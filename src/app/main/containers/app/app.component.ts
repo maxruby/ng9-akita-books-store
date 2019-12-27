@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
     private bookService: BooksService,
     private layoutQuery: LayoutQuery,
     private layoutService: LayoutService) {
-    
   }
 
   ngOnInit() {

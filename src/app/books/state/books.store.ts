@@ -32,7 +32,7 @@ export class BooksStore extends EntityStore<BooksState, Book> {
   }
 
   updateCollection(id: ID) {
-    this.update(state => ({ collection: this.toggleActive(state.collection.filter(_id => _id == id)) }));
+    this.update({ collection: [id] }); // state.collection.filter(_id => _id == id)
   }
 }
 

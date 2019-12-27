@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Creds } from '../state/auth.service';
+import { Creds } from '../../state/auth.service';
 
 @Component({
   selector: 'app-login-form',

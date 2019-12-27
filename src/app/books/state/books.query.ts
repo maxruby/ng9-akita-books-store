@@ -11,18 +11,18 @@ export class BooksQuery extends QueryEntity<BooksState, Book> {
     super(store);
   }
 
-  selectSearchTerm$ = this.select(state => state.searchTerm);
-  selectResultIds$ = this.select(state => state.resultIds);
-  selectCollection$ = this.select(state => state.collection);
+  selectSearchTerm$ = this.select(state => state.searchTerm || '');
+  selectResultIds$ = this.select(state => state.resultIds || []);
+  selectCollection$ = this.select(state => state.collection || []);
 
   isInCollection$ = this.selectCollection$.pipe(map(ids => ids.includes(this.getActiveId()) === true));
 
-  get getSearchTerm(): string {
-    return this.snapshotManager.getStoresSnapshot(['searchTerm']) as string;
+  get getSearchTerm() {
+    return this.snapshotManager.getStoresSnapshot(['books'])['searchTerm'] || '';
   }
   
-  get collection(): ID[] {
-    return this.snapshotManager.getStoresSnapshot(['collection']) as Array<ID>;
+  get collection() {
+    return this.snapshotManager.getStoresSnapshot(['books'])['collection'] || [];
   }
 
   get nonCollectionBooks(): string[] {

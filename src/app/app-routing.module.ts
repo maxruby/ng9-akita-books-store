@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 import { NotFoundPageComponent } from './main/containers/not-found-page/not-found-page.component';
-
+import { LoginPageComponent } from './auth/containers/login-page/login-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/books', pathMatch: 'full' },
@@ -11,7 +11,7 @@ const routes: Routes = [
     loadChildren: './books/books.module#BooksModule',
     canActivate: [AuthGuard],
   },
-  { path: '**', component: NotFoundPageComponent },
+  { path: '**', component: LoginPageComponent },
 ];
 
 @NgModule({

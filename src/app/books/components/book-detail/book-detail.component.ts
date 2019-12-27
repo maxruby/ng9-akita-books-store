@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Location } from '@angular/common';
-import { Book } from '../state/book.model';
+import { Book } from '../../state/book.model';
 
 @Component({
   selector: 'app-book-detail',

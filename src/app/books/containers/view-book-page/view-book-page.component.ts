@@ -18,5 +18,4 @@ export class ViewBookPageComponent implements OnInit {
     const activeBookId = this.route.snapshot.paramMap.get('id');
     this.bookService.setActive(activeBookId);
   }
-
 }

@@ -11,8 +11,7 @@ export class LoginPageComponent {
 
   constructor(private authService: AuthService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   onSubmit(creds: Creds) {
     this.authService.login(creds).subscribe();

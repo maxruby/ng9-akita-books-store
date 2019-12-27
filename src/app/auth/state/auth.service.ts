@@ -9,7 +9,7 @@ export type Creds = { password: string, username: string };
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  constructor(private authStore: AuthStore,private router: Router) { }
+  constructor(private authStore: AuthStore, private router: Router) { }
 
   login(creds: Creds) {
     return this.callServer(creds).pipe(

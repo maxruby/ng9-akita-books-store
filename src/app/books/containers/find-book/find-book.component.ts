@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { switchMap, skip, debounceTime, filter } from 'rxjs/operators';
 import { Book } from '../../state/book.model';
@@ -12,7 +12,7 @@ import { untilDestroyed } from 'ngx-take-until-destroy';
   styleUrls: ['./find-book.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FindBookComponent {
+export class FindBookComponent implements OnDestroy {
   searchQuery: string;
   books$: Observable<Book[]>;
   loading$: Observable<boolean>;
@@ -36,4 +36,6 @@ export class FindBookComponent {
   search(query: string) {
     this.bookService.updateSearchTerm(query);
   }
+
+  ngOnDestroy() { }
 }

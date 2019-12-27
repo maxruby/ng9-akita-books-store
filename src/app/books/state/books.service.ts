@@ -5,7 +5,6 @@ import { GoogleBooksService } from 'src/app/main/services/google-books.service';
 import { transaction, ID } from '@datorama/akita';
 import { Book } from './book.model';
 import { forkJoin } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class BooksService {
@@ -24,8 +23,8 @@ export class BooksService {
 
   @transaction()
   private updateBooks(books: Book[]) {
-    const nonCollection = this.bookQuery.nonCollectionBooks;
-    this.bookStore.remove([...nonCollection]);
+    // const nonCollection = this.bookQuery.nonCollectionBooks;
+    // this.bookStore.remove([...nonCollection]);
     this.add(books);
     this.bookStore.updateResultIds(books.map(({ id }) => id));
     this.bookStore.setLoading(false);
@@ -45,7 +44,7 @@ export class BooksService {
 
   loadBooksToStore() {
     const books$ = this.bookQuery.collection.map(id => this.googleService.retrieveBook(id));
-    forkJoin(books$).subscribe(books => this.add(books));
+    forkJoin(books$).subscribe((books: Book[]) => this.add(books));
   }
 
   updateCollection(bookId: ID) {

@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 import { Observable, of} from 'rxjs';
-import { catchError, map, switchMap, mapTo } from 'rxjs/operators';
-import { GoogleBooksService } from '../core/services/google-books.service';
-import { toBoolean, ID } from '@datorama/akita';
+import { catchError, map } from 'rxjs/operators';
+import { GoogleBooksService } from '../main/services/google-books.service';
 import { BooksQuery } from './state/books.query';
 import { BooksService } from './state/books.service';
-import { Book } from './state/book.model';
 
 @Injectable({
   providedIn: 'root'
