@@ -5,13 +5,14 @@ import { NotFoundPageComponent } from './main/containers/not-found-page/not-foun
 import { LoginPageComponent } from './auth/containers/login-page/login-page.component';
 
 const routes: Routes = [
+  { path: 'login', component: LoginPageComponent },
   { path: '', redirectTo: '/books', pathMatch: 'full' },
   {
     path: 'books',
     loadChildren: './books/books.module#BooksModule',
     canActivate: [AuthGuard],
   },
-  { path: '**', component: LoginPageComponent },
+  { path: '**', component: NotFoundPageComponent },
 ];
 
 @NgModule({

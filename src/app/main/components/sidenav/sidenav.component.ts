@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';;
 
 @Component({
   selector: 'app-sidenav',
@@ -6,12 +6,16 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-
-  @Input() open = false;
+  
+  @Input() open = false; 
+  @Output() escapedKeyPressed = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  toggleMenu() {
+    this.escapedKeyPressed.emit();
+  }
 }

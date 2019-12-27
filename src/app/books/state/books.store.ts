@@ -32,7 +32,13 @@ export class BooksStore extends EntityStore<BooksState, Book> {
   }
 
   updateCollection(id: ID) {
-    this.update({ collection: [id] }); // state.collection.filter(_id => _id == id)
+    this.update(state => {
+      if (state.collection.includes(id)) {
+        return ({ collection: [...state.collection.filter(_id => _id !== id)] });
+      } else {
+        return ({ collection: [...state.collection, id].filter((v, i, a) => a.indexOf(v) === i) });
+      }
+    });
   }
 }
 

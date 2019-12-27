@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { QueryEntity, SnapshotManager, ID } from '@datorama/akita';
+import { QueryEntity } from '@datorama/akita';
 import { BooksStore, BooksState } from './books.store';
 import { Book } from './book.model';
 import { map } from 'rxjs/operators';
@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class BooksQuery extends QueryEntity<BooksState, Book> {
 
-  constructor(protected store: BooksStore, private snapshotManager: SnapshotManager) {
+  constructor(protected store: BooksStore) {
     super(store);
   }
 
@@ -18,11 +18,11 @@ export class BooksQuery extends QueryEntity<BooksState, Book> {
   isInCollection$ = this.selectCollection$.pipe(map(ids => ids.includes(this.getActiveId()) === true));
 
   get getSearchTerm() {
-    return this.snapshotManager.getStoresSnapshot(['books'])['searchTerm'] || '';
+    return this.getValue().searchTerm;
   }
   
   get collection() {
-    return this.snapshotManager.getStoresSnapshot(['books'])['collection'] || [];
+    return this.getValue().collection;
   }
 
   get nonCollectionBooks(): string[] {

@@ -18,7 +18,6 @@ import { BooksQuery} from '../books/state/books.query';
 import { LayoutService } from './state/layout.service';
 import { LayoutStore } from './state/layout.store';
 import { LayoutQuery } from './state/layout.query';
-import { SnapshotManager } from '@datorama/akita';
 
 export const COMPONENTS = [
   AppComponent,
@@ -38,7 +37,7 @@ export class MainModule {
   static forRoot() { 
     return {
       ngModule: MainModule,
-      providers: [SnapshotManager, GoogleBooksService, BooksService, BooksStore, BooksQuery, LayoutService, LayoutStore, LayoutQuery],
+      providers: [ GoogleBooksService, BooksService, BooksStore, BooksQuery, LayoutService, LayoutStore, LayoutQuery],
     };
   }
 }

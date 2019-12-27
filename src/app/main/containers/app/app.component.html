@@ -1,5 +1,5 @@
 <app-layout>
-  <app-sidenav [open]="showSidenav$ | async">
+  <app-sidenav [open]="showSidenav$ | async" (escapedKeyPressed)="closeSidenav()">
     <app-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/" icon="book" hint="View your book collection">
       My Collection
     </app-nav-item>

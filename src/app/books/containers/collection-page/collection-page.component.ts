@@ -14,7 +14,6 @@ export class CollectionPageComponent {
   books$: Observable<Book[]>;
 
   constructor(private bookQuery: BooksQuery) {
-    this.books$ = this.bookQuery.selectAll(); // selectMany(this.bookQuery.collection);
+    this.books$ = this.bookQuery.selectMany(this.bookQuery.collection);
   }
-
 }

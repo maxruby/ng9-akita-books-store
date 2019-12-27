@@ -1,4 +1,4 @@
-<mat-sidenav [opened]="open">
+<mat-sidenav [opened]="open" (keydown.escape)="toggleMenu()" disableClose>
   <mat-nav-list>
     <ng-content></ng-content>
   </mat-nav-list>

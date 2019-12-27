@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
+import { resetStores } from '@datorama/akita'; 
 
 export interface User {
   name: string;
@@ -31,7 +32,9 @@ export class AuthStore extends Store<AuthState> {
 
   logout() {
     /** In real life, you will abstract this to service. */
-    localStorage.removeItem('user');
+    // localStorage.removeItem('user');
+    localStorage.clear();
+    resetStores();
     this.update(createInitialState());
   }
 
