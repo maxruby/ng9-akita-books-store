@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../styling/material/material.module';
 import { RouterModule } from '@angular/router';
 import { PipesModule } from 'src/app/core/pipes/pipes.module';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 const COMPONENTS = [
   BookAuthorsComponent,
@@ -25,6 +26,7 @@ const COMPONENTS = [
     MaterialModule,
     RouterModule,
     PipesModule,
+    InfiniteScrollModule
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS,

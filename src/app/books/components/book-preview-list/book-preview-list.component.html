@@ -1,1 +1,10 @@
-<app-book-preview *ngFor="let book of books" [book]="book"></app-book-preview>
+<div
+  class="book-preview-list"
+  infinite-scroll
+  [infiniteScrollDistance]="scrollDistance"
+  [infiniteScrollUpDistance]="scrollUpDistance"
+  [infiniteScrollThrottle]="throttle"
+  [scrollWindow]="false"
+  (scrolled)="onScroll()">
+  <app-book-preview *ngFor="let book of books" [book]="book"></app-book-preview>
+</div>

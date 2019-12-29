@@ -15,4 +15,13 @@ export class BookPreviewListComponent implements OnInit {
   ngOnInit() {
   }
 
+  scrollDistance = 2;
+  scrollUpDistance = 1.5;
+  throttle = 50;
+  limit = 20;
+  page = 1;
+
+  onScroll() {
+    console.log('scrolled');
+  }
 }

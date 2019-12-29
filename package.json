@@ -25,6 +25,7 @@
     "@datorama/akita-ng-entity-service": "^1.0.0",
     "akita-ng-fire": "^1.0.0",
     "hammerjs": "^2.0.8",
+    "ngx-infinite-scroll": "^8.0.1",
     "ngx-take-until-destroy": "^5.4.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
