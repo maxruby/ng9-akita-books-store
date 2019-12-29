@@ -98,3 +98,10 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 - https://github.com/datorama/akita
 - https://netbasal.gitbook.io/
 - https://netbasal.gitbook.io/akita/enhancers/devtools
+- https://engineering.datorama.com/i-built-the-ngrx-demo-app-with-akita-heres-the-result-57f83fe92192
+
+## TODO
+
+- Add infinite scroll
+   - https://material.angular.io/cdk/scrolling/overview
+   - AkitaInfiniteScroll
