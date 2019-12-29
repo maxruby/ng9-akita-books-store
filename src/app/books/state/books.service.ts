@@ -26,12 +26,17 @@ export class BooksService {
     // const nonCollection = this.bookQuery.nonCollectionBooks;
     // this.bookStore.remove([...nonCollection]);
     this.add(books);
+    this.updatePage({ hasMore: this.bookQuery.hasMore, page: this.bookQuery.currentPage + 1});
     this.bookStore.updateResultIds(books.map(({ id }) => id));
     this.bookStore.setLoading(false);
   }
 
   updateSearchTerm(searchTerm: string) {
     this.bookStore.updateSearchTerm(searchTerm);
+  }
+
+  updatePage(page: { hasMore: boolean, page: number }) {
+    this.bookStore.updatePage(page);
   }
 
   setActive(id: ID) {
@@ -55,5 +60,4 @@ export class BooksService {
       JSON.stringify(this.bookQuery.collection)
     );
   }
-
 }

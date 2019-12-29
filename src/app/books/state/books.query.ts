@@ -30,4 +30,12 @@ export class BooksQuery extends QueryEntity<BooksState, Book> {
       filterBy: ({ id }) => this.collection.includes(id) === false})
         .map(({ id }) => id);
   }
+
+  get hasMore() {
+    return this.getValue().hasMore;
+  }
+
+  get currentPage() {
+    return this.getValue().page;
+  }
 }

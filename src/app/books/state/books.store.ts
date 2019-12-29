@@ -6,13 +6,17 @@ export interface BooksState extends EntityState<Book> {
   searchTerm: string;
   resultIds: ID[];
   collection: ID[];
+  hasMore: boolean;
+  page: number;
 }
 
 const initialState = {
   searchTerm: '',
   resultIds: [],
   loading: false,
-  collection: JSON.parse(localStorage.getItem('collection') as string) || []
+  collection: JSON.parse(localStorage.getItem('collection') as string) || [],
+  hasMore: true,
+  page: 1
 };
 
 @Injectable({ providedIn: 'root' })
@@ -29,6 +33,10 @@ export class BooksStore extends EntityStore<BooksState, Book> {
 
   updateResultIds(resultIds: ID[]) {
     this.update({ resultIds });
+  }
+
+  updatePage(page: { hasMore: boolean, page: number }) {
+    this.update(page);
   }
 
   updateCollection(id: ID) {

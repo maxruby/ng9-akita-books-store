@@ -100,8 +100,14 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 - https://netbasal.gitbook.io/akita/enhancers/devtools
 - https://engineering.datorama.com/i-built-the-ngrx-demo-app-with-akita-heres-the-result-57f83fe92192
 
-## TODO
+virtual scrolling libraries evaluated
+- https://github.com/orizens/ngx-infinite-scroll
+- https://github.com/staskolukasz/ngx-infinite-scroller
+- https://github.com/dhilt/ngx-ui-scroll
+- https://github.com/christiannwamba/angular-infinite-scrolling
+- https://medium.com/front-end-weekly/how-to-use-virtual-scrolling-using-angular-7-cdk-9802110111fa
 
-- Add infinite scroll
-   - https://material.angular.io/cdk/scrolling/overview
-   - AkitaInfiniteScroll
+OpenAPI contracts for Google APIs
+- https://github.com/APIs-guru/google-discovery-to-swagger
+- https://github.com/APIs-guru/openapi-directory
+- https://github.com/APIs-guru/openapi-directory/tree/master/APIs/googleapis.com/books
