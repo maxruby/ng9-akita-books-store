@@ -1,0 +1,13 @@
+export { CloudloadingService } from './services/cloudloading.service';
+export { DictionaryService } from './services/dictionary.service';
+export { FamilysharingService } from './services/familysharing.service';
+export { MyconfigService } from './services/myconfig.service';
+export { MylibraryService } from './services/mylibrary.service';
+export { NotificationService } from './services/notification.service';
+export { OnboardingService } from './services/onboarding.service';
+export { PersonalizedstreamService } from './services/personalizedstream.service';
+export { PromoofferService } from './services/promooffer.service';
+export { SeriesService } from './services/series.service';
+export { BookshelvesService } from './services/bookshelves.service';
+export { VolumesService } from './services/volumes.service';
+export { LayersService } from './services/layers.service';

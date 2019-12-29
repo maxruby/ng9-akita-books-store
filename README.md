@@ -100,14 +100,20 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 - https://netbasal.gitbook.io/akita/enhancers/devtools
 - https://engineering.datorama.com/i-built-the-ngrx-demo-app-with-akita-heres-the-result-57f83fe92192
 
-virtual scrolling libraries evaluated
+**Virtual scrolling**
 - https://github.com/orizens/ngx-infinite-scroll
 - https://github.com/staskolukasz/ngx-infinite-scroller
 - https://github.com/dhilt/ngx-ui-scroll
 - https://github.com/christiannwamba/angular-infinite-scrolling
 - https://medium.com/front-end-weekly/how-to-use-virtual-scrolling-using-angular-7-cdk-9802110111fa
 
-OpenAPI contracts for Google APIs
+**OpenAPI contracts for Google APIs**
 - https://github.com/APIs-guru/google-discovery-to-swagger
 - https://github.com/APIs-guru/openapi-directory
 - https://github.com/APIs-guru/openapi-directory/tree/master/APIs/googleapis.com/books
+- https://medium.com/@balramchavan/generate-angular-ionic-client-code-from-openapi-swagger-rest-api-specifications-128a6899681a
+  
+## To follow up
+
+**angular 9**
+- https://medium.com/grapecity/what-to-expect-in-angular-9-a82810069000
