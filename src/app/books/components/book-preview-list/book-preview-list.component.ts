@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from '../../state/book.model';
 
 @Component({
@@ -9,11 +9,11 @@ import { Book } from '../../state/book.model';
 export class BookPreviewListComponent implements OnInit {
 
   @Input() books: Book[];
+  @Output() scrolled = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   scrollDistance = 2;
   scrollUpDistance = 1.5;
@@ -22,6 +22,6 @@ export class BookPreviewListComponent implements OnInit {
   page = 1;
 
   onScroll() {
-    console.log('scrolled');
+     this.scrolled.emit();
   }
 }

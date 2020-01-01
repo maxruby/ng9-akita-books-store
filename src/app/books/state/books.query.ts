@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { QueryEntity } from '@datorama/akita';
+import { QueryEntity, ID } from '@datorama/akita';
 import { BooksStore, BooksState } from './books.store';
 import { Book } from './book.model';
 import { map } from 'rxjs/operators';
@@ -17,11 +17,11 @@ export class BooksQuery extends QueryEntity<BooksState, Book> {
 
   isInCollection$ = this.selectCollection$.pipe(map(ids => ids.includes(this.getActiveId()) === true));
 
-  get getSearchTerm() {
+  get getSearchTerm(): string {
     return this.getValue().searchTerm;
   }
   
-  get collection() {
+  get collection(): ID[] {
     return this.getValue().collection;
   }
 
@@ -31,11 +31,15 @@ export class BooksQuery extends QueryEntity<BooksState, Book> {
         .map(({ id }) => id);
   }
 
-  get hasMore() {
+  get hasMore(): boolean {
     return this.getValue().hasMore;
   }
 
-  get currentPage() {
+  get currentPage(): number {
     return this.getValue().page;
+  }
+
+  get totalBooksCount(): number {
+    return this.getValue().totalItems;
   }
 }

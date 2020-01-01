@@ -5,6 +5,8 @@ import { GoogleBooksService } from 'src/app/main/services/google-books.service';
 import { transaction, ID } from '@datorama/akita';
 import { Book } from './book.model';
 import { forkJoin } from 'rxjs';
+import { PaginatedBooks } from 'src/app/core/api/web/adapters';
+import { PER_PAGE } from 'src/app/core/api/web/adapters/volumes.pagination';
 
 @Injectable({ providedIn: 'root' })
 export class BooksService {
@@ -16,8 +18,14 @@ export class BooksService {
 
   searchBooks(searchTerm: string) {
     this.bookStore.setLoading(true);
-    this.googleService.searchBooks(searchTerm).subscribe(books => {
-      this.updateBooks(books);
+    let offset = this.bookQuery.currentPage * PER_PAGE;
+    let pagination = { startIndex: offset, maxResults: PER_PAGE };
+    if (this.bookQuery.hasMore) {
+      pagination.startIndex += 1;
+    }
+    this.googleService.searchBooks(searchTerm, pagination).subscribe((paginatedBooks: PaginatedBooks) => {
+      this.updateBooks(paginatedBooks.books);
+      this.updatePage(paginatedBooks.totalItems);
     });
   }
 
@@ -26,7 +34,6 @@ export class BooksService {
     // const nonCollection = this.bookQuery.nonCollectionBooks;
     // this.bookStore.remove([...nonCollection]);
     this.add(books);
-    this.updatePage({ hasMore: this.bookQuery.hasMore, page: this.bookQuery.currentPage + 1});
     this.bookStore.updateResultIds(books.map(({ id }) => id));
     this.bookStore.setLoading(false);
   }
@@ -35,8 +42,10 @@ export class BooksService {
     this.bookStore.updateSearchTerm(searchTerm);
   }
 
-  updatePage(page: { hasMore: boolean, page: number }) {
-    this.bookStore.updatePage(page);
+  updatePage(totalItems?: number) {
+    const hasMore = this.bookQuery.currentPage * PER_PAGE < (totalItems || this.bookQuery.totalBooksCount);
+    const page = hasMore ? this.bookQuery.currentPage + 1 : this.bookQuery.currentPage;
+    this.bookStore.updatePage({ hasMore, page, totalItems });
   }
 
   setActive(id: ID) {

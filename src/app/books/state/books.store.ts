@@ -7,6 +7,7 @@ export interface BooksState extends EntityState<Book> {
   resultIds: ID[];
   collection: ID[];
   hasMore: boolean;
+  totalItems: number;
   page: number;
 }
 
@@ -16,6 +17,7 @@ const initialState = {
   loading: false,
   collection: JSON.parse(localStorage.getItem('collection') as string) || [],
   hasMore: true,
+  totalItems: 0,
   page: 1
 };
 
@@ -35,7 +37,7 @@ export class BooksStore extends EntityStore<BooksState, Book> {
     this.update({ resultIds });
   }
 
-  updatePage(page: { hasMore: boolean, page: number }) {
+  updatePage(page: { hasMore: boolean, page: number, totalItems?: number }) {
     this.update(page);
   }
 

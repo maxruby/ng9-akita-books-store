@@ -37,5 +37,9 @@ export class FindBookComponent implements OnDestroy {
     this.bookService.updateSearchTerm(query);
   }
 
+  onScrolled() {
+    this.bookService.updatePage()
+  }
+
   ngOnDestroy() { }
 }

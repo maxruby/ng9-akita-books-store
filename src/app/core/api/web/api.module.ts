@@ -16,6 +16,9 @@ import { SeriesService } from './services/series.service';
 import { BookshelvesService } from './services/bookshelves.service';
 import { VolumesService } from './services/volumes.service';
 import { LayersService } from './services/layers.service';
+import { VolumeAdapter, VolumesAdapter } from './adapters/index';
+
+const ADAPTERS = [ VolumeAdapter, VolumesAdapter ];
 
 /**
  * Provider for all Api services, plus ApiConfiguration
@@ -42,7 +45,8 @@ import { LayersService } from './services/layers.service';
     SeriesService,
     BookshelvesService,
     VolumesService,
-    LayersService
+    LayersService,
+    ...ADAPTERS
   ],
 })
 export class ApiModule {

@@ -111,8 +111,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 - https://github.com/APIs-guru/google-discovery-to-swagger
 - https://github.com/APIs-guru/openapi-directory
 - https://github.com/APIs-guru/openapi-directory/tree/master/APIs/googleapis.com/books
-- https://medium.com/@balramchavan/generate-angular-ionic-client-code-from-openapi-swagger-rest-api-specifications-128a6899681a
-  
+- https://www.npmjs.com/package/ng-swagger-gen
+- https://dev.to/florimondmanca/consuming-apis-in-angular--the-model-adapter-pattern-3fk5
+
 ## To follow up
 
 **angular 9**

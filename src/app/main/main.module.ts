@@ -37,7 +37,7 @@ export class MainModule {
   static forRoot() { 
     return {
       ngModule: MainModule,
-      providers: [ GoogleBooksService, BooksService, BooksStore, BooksQuery, LayoutService, LayoutStore, LayoutQuery],
+      providers: [ GoogleBooksService, BooksService, BooksStore, BooksQuery, LayoutService, LayoutStore, LayoutQuery ],
     };
   }
 }
