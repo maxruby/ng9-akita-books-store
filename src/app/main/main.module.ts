@@ -19,6 +19,18 @@ import { LayoutService } from './state/layout.service';
 import { LayoutStore } from './state/layout.store';
 import { LayoutQuery } from './state/layout.query';
 
+// import ngx-translate and the http loader
+import {TranslateCompiler, TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient} from '@angular/common/http';
+// import ngx-translate-messageformat-compiler
+import {TranslateMessageFormatCompiler} from 'ngx-translate-messageformat-compiler';
+
+// AoT requires an exported function for factories
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
+}
+
 export const COMPONENTS = [
   AppComponent,
   NotFoundPageComponent,
@@ -29,7 +41,20 @@ export const COMPONENTS = [
 ];
  
 @NgModule({
-  imports: [CommonModule, RouterModule, MaterialModule],
+  imports: [CommonModule, RouterModule, MaterialModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: (createTranslateLoader),
+          deps: [HttpClient]
+      },
+       // compiler configuration
+       compiler: {
+        provide: TranslateCompiler,
+        useClass: TranslateMessageFormatCompiler
+      }
+    })
+  ],
   declarations: COMPONENTS,
   exports: COMPONENTS,
 })

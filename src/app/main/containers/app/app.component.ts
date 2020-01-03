@@ -5,6 +5,7 @@ import { AuthService } from '../../../auth/state/auth.service';
 import { LayoutQuery } from '../../state/layout.query';
 import { LayoutService } from '../../state/layout.service';
 import { BooksService } from '../../../books/state/books.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,12 @@ export class AppComponent implements OnInit {
     private authService: AuthService,
     private bookService: BooksService,
     private layoutQuery: LayoutQuery,
-    private layoutService: LayoutService) {
+    private layoutService: LayoutService,
+    private translate: TranslateService) {
+      // this language will be used as a fallback when a translation isn't found in the current language
+      this.translate.setDefaultLang('en');
+      // the lang to use, if the lang isn't available, it will use the current loader to get them
+      this.translate.use('en');
   }
 
   ngOnInit() {

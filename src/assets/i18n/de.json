@@ -1,0 +1,15 @@
+{
+  "sidenav": {
+      "view_collection_tab_title": "Meine Sammlung",
+      "find_book_tab_title": "Suche nach Bücher",
+      "sign_in_tab_title": "Anmelden",
+      "sign_out_tab_title": "Abmelden"
+  },
+  "toolbar": {
+    "title": "Bücher Sammlung"
+  },
+  "not-found": {
+    "message": "Hey! It looks like this page doesn't exist yet.",
+    "redirect": "Zurück"
+  }
+}

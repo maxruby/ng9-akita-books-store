@@ -114,7 +114,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 - https://www.npmjs.com/package/ng-swagger-gen
 - https://dev.to/florimondmanca/consuming-apis-in-angular--the-model-adapter-pattern-3fk5
 
-## To follow up
+## Todo
+
+**ngx-translate**
+- https://www.codeandweb.com/babeledit/tutorials/how-to-translate-your-angular8-app-with-ngx-translate
 
 **angular 9**
 - https://medium.com/grapecity/what-to-expect-in-angular-9-a82810069000
+

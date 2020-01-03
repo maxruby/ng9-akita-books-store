@@ -1,20 +1,20 @@
 <app-layout>
   <app-sidenav [open]="showSidenav$ | async" (escapedKeyPressed)="closeSidenav()">
     <app-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/" icon="book" hint="View your book collection">
-      My Collection
+      {{'sidenav.view_collection_tab_title' | translate }}
     </app-nav-item>
     <app-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/books/find" icon="search" hint="Find your next book!">
-      Browse Books
+      {{'sidenav.find_book_tab_title' | translate }}
     </app-nav-item>
     <app-nav-item (navigate)="closeSidenav()" *ngIf="!(loggedIn$ | async)">
-      Sign In
+      {{'sidenav.sign_in_tab_title' | translate }}
     </app-nav-item>
     <app-nav-item (navigate)="logout()" *ngIf="loggedIn$ | async">
-      Sign Out
+      {{'sidenav.sign_out_tab_title' | translate }}
     </app-nav-item>
   </app-sidenav>
   <app-toolbar (openMenu)="openSidenav()">
-    Book Collection
+    {{'toolbar.title' | translate }}
   </app-toolbar>
 
   <router-outlet></router-outlet>

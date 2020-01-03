@@ -10,18 +10,23 @@ export class BookPreviewListComponent implements OnInit {
 
   @Input() books: Book[];
   @Output() scrolled = new EventEmitter();
+  @Output() scrolledUp = new EventEmitter();
+
+  scrollDistance = 2;
+  scrollUpDistance = 1.5;
+  throttle = 50;
+  limit = 500;
+  page = 1;
 
   constructor() { }
 
   ngOnInit() { }
 
-  scrollDistance = 2;
-  scrollUpDistance = 1.5;
-  throttle = 50;
-  limit = 20;
-  page = 1;
-
-  onScroll() {
+  onScrollDown() {
      this.scrolled.emit();
+  }
+
+  onScrollUp() {
+     this.scrolledUp.emit();
   }
 }

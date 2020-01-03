@@ -14,6 +14,5 @@ export class BookSearchComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 }

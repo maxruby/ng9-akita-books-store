@@ -20,9 +20,9 @@ export class GoogleBooksService {
     private volumesAdapter: VolumesAdapter,
     private volumeAdapter: VolumeAdapter) { }
 
-  searchBooks(queryTitle: ID, pagination?: { startIndex: number, maxResults: number }): Observable<PaginatedBooks> {
+  searchBooks(queryTitle: string, pagination?: { startIndex: number, maxResults: number }): Observable<PaginatedBooks> {
     return this.booksVolumeService
-      .booksVolumesList({ q: 'programming', startIndex: pagination.startIndex, maxResults: pagination.maxResults })
+      .booksVolumesList({ q: queryTitle, startIndex: pagination.startIndex, maxResults: pagination.maxResults })
       .pipe(map((volumes: Volumes) => this.volumesAdapter.adapt(volumes)));
   }
   

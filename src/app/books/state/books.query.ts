@@ -20,7 +20,7 @@ export class BooksQuery extends QueryEntity<BooksState, Book> {
   get getSearchTerm(): string {
     return this.getValue().searchTerm;
   }
-  
+
   get collection(): ID[] {
     return this.getValue().collection;
   }
@@ -37,6 +37,10 @@ export class BooksQuery extends QueryEntity<BooksState, Book> {
 
   get currentPage(): number {
     return this.getValue().page;
+  }
+
+  get resetPagination(): boolean {
+    return this.getValue().resetPagination;
   }
 
   get totalBooksCount(): number {

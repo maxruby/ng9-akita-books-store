@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { switchMap, skip, debounceTime, filter } from 'rxjs/operators';
 import { Book } from '../../state/book.model';
@@ -13,32 +13,40 @@ import { untilDestroyed } from 'ngx-take-until-destroy';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FindBookComponent implements OnDestroy {
+
   searchQuery: string;
   books$: Observable<Book[]>;
   loading$: Observable<boolean>;
   error$: Observable<string>;
+  changedSearchTerm: boolean;
 
-  constructor(private bookQuery: BooksQuery,
-    private bookService: BooksService) {
+  constructor(private booksQuery: BooksQuery, private booksService: BooksService) {
+      
+    this.searchQuery = this.booksQuery.getSearchTerm;
+    this.loading$ = this.booksQuery.selectLoading();
 
-    this.searchQuery = this.bookQuery.getSearchTerm;
-    this.loading$ = this.bookQuery.selectLoading();
-
-    this.bookQuery.selectSearchTerm$.pipe(skip(1), filter(Boolean), debounceTime(300), untilDestroyed(this)).subscribe((searchTerm: string) => {
-      this.bookService.searchBooks(searchTerm);
+    this.booksQuery.selectSearchTerm$.pipe(skip(1), filter(Boolean), debounceTime(300), untilDestroyed(this)).subscribe((searchTerm: string) => {
+      this.booksService.searchBooks(searchTerm);
     });
 
-    this.books$ = this.bookQuery.selectResultIds$.pipe(
-      switchMap(ids => this.bookQuery.selectMany(ids))
+    this.books$ = this.booksQuery.selectResultIds$.pipe(
+      switchMap(ids => this.booksQuery.selectMany(ids))
     );
   }
 
   search(query: string) {
-    this.bookService.updateSearchTerm(query);
+    const newSearchTerm = query !== this.booksQuery.getSearchTerm;
+    this.booksService.updateSearchTerm(query, newSearchTerm);
   }
 
   onScrolled() {
-    this.bookService.updatePage()
+    this.booksService.updatePage('DOWN');
+    this.booksService.searchBooks(this.booksQuery.getSearchTerm);
+  }
+
+  onScrolledUp() {
+    this.booksService.updatePage('UP');
+    this.booksService.searchBooks(this.booksQuery.getSearchTerm);
   }
 
   ngOnDestroy() { }

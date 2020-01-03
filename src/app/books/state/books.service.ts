@@ -10,6 +10,10 @@ import { PER_PAGE } from 'src/app/core/api/web/adapters/volumes.pagination';
 
 @Injectable({ providedIn: 'root' })
 export class BooksService {
+
+  pagination = { startIndex: 1, maxResults: PER_PAGE };
+  resetPagination = false;
+
   constructor(
     private bookStore: BooksStore,
     private bookQuery: BooksQuery,
@@ -17,15 +21,20 @@ export class BooksService {
   ) { }
 
   searchBooks(searchTerm: string) {
-    this.bookStore.setLoading(true);
-    let offset = this.bookQuery.currentPage * PER_PAGE;
-    let pagination = { startIndex: offset, maxResults: PER_PAGE };
-    if (this.bookQuery.hasMore) {
-      pagination.startIndex += 1;
+    if (!this.bookQuery.hasMore) {
+       this.bookStore.updateResetPagination(true);
+       return;
     }
-    this.googleService.searchBooks(searchTerm, pagination).subscribe((paginatedBooks: PaginatedBooks) => {
+    this.bookStore.setLoading(true);
+    this.updatePaginationIndex();
+    if (this.bookQuery.resetPagination) {
+      this.bookStore.updateResetPagination(false);
+      this.pagination.startIndex = 1;
+      this.bookStore.updatePage({ hasMore: true, page: 1 });
+    }
+    this.googleService.searchBooks(searchTerm, this.pagination).subscribe((paginatedBooks: PaginatedBooks) => {
       this.updateBooks(paginatedBooks.books);
-      this.updatePage(paginatedBooks.totalItems);
+      this.updateItemsCount(paginatedBooks.totalItems);
     });
   }
 
@@ -38,14 +47,28 @@ export class BooksService {
     this.bookStore.setLoading(false);
   }
 
-  updateSearchTerm(searchTerm: string) {
+  updateSearchTerm(searchTerm: string, resetPagination: boolean = false) {
+    this.bookStore.updateResetPagination(resetPagination);
     this.bookStore.updateSearchTerm(searchTerm);
   }
 
-  updatePage(totalItems?: number) {
-    const hasMore = this.bookQuery.currentPage * PER_PAGE < (totalItems || this.bookQuery.totalBooksCount);
-    const page = hasMore ? this.bookQuery.currentPage + 1 : this.bookQuery.currentPage;
-    this.bookStore.updatePage({ hasMore, page, totalItems });
+  updatePage(scrollDirection: 'UP' | 'DOWN') {
+    let hasMore: boolean;
+    let page: number;
+
+    if (scrollDirection === 'DOWN') {
+      hasMore = this.bookQuery.currentPage * PER_PAGE < this.bookQuery.totalBooksCount;
+      page = hasMore ? this.bookQuery.currentPage + 1 : this.bookQuery.currentPage;  
+    }
+    if (scrollDirection === 'UP') {
+      hasMore = ((this.bookQuery.currentPage * PER_PAGE) - PER_PAGE) > 0;
+      page = hasMore ? this.bookQuery.currentPage - 1 : this.bookQuery.currentPage;
+    }
+    this.bookStore.updatePage({ hasMore, page });
+  }
+
+  updateItemsCount(totalItems: number) {
+    this.bookStore.updateCount(totalItems);
   }
 
   setActive(id: ID) {
@@ -68,5 +91,10 @@ export class BooksService {
       'collection',
       JSON.stringify(this.bookQuery.collection)
     );
+  }
+
+  updatePaginationIndex(): void {
+    let offset = this.bookQuery.currentPage * PER_PAGE;
+    this.pagination.startIndex = offset;
   }
 }
