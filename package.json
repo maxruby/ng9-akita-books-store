@@ -8,6 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "deploy": "ng deploy --base-href=ng8-akita-books-store",
     "swagger-gen": "node_modules/.bin/ng-swagger-gen -i ./src/app/core/api/contract/googleapis-books.yaml -o ./src/app/core/api/web"
   },
   "private": true,
