@@ -6,7 +6,7 @@ describe('GoogleBooksService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: GoogleBooksService = TestBed.get(GoogleBooksService);
+    const service: GoogleBooksService = TestBed.inject(GoogleBooksService);
     expect(service).toBeTruthy();
   });
 });

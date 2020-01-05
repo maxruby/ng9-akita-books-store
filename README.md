@@ -1,15 +1,18 @@
-# Angular 8 Akita Bookstore Application
+# Angular 9 Akita Bookstore Application
 
 ## Installation
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
+This project was updated with [Angular CLI](https://github.com/angular/angular-cli) to version 9.0.0-rc.7.
 
+Update instructions can be found at https://next.angular.io/guide/updating-to-version-9.
+ 
 **NodeJS and @ng/cli setup**
 ```
 # set latest stable version of nodejs
-nvm use v11.0.0
+nvm install 12.0.0
+nvm use v12.0.0
 # ng cli should be latest stable version
-ng version # v8.3.21
+ng version # 9.0.0-rc.7
 ```
 
 **Dependencies**
@@ -114,11 +117,15 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 - https://www.npmjs.com/package/ng-swagger-gen
 - https://dev.to/florimondmanca/consuming-apis-in-angular--the-model-adapter-pattern-3fk5
 
-## Todo
-
 **ngx-translate**
 - https://www.codeandweb.com/babeledit/tutorials/how-to-translate-your-angular8-app-with-ngx-translate
 
 **angular 9**
+- https://next.angular.io/guide/updating-to-version-9
 - https://medium.com/grapecity/what-to-expect-in-angular-9-a82810069000
+- 
 
+## Todo
+
+**deployment**
+- https://github.com/angular-schule/angular-cli-ghpages

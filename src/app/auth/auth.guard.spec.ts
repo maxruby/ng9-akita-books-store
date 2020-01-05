@@ -5,11 +5,11 @@ import { AuthGuard } from './auth.guard';
 describe('AuthGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthGuardGuard]
+      providers: [AuthGuard]
     });
   });
 
-  it('should ...', inject([AuthGuardGuard], (guard: AuthGuardGuard) => {
+  it('should ...', inject([AuthGuard], (guard: AuthGuard) => {
     expect(guard).toBeTruthy();
   }));
 });

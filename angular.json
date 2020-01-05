@@ -124,6 +124,10 @@
               "devServerTarget": "ng8-akita-books-store:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }

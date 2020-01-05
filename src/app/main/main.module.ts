@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -48,21 +48,21 @@ export const COMPONENTS = [
           useFactory: (createTranslateLoader),
           deps: [HttpClient]
       },
-       // compiler configuration
-       compiler: {
-        provide: TranslateCompiler,
-        useClass: TranslateMessageFormatCompiler
-      }
+      //  // compiler configuration
+      //  compiler: {
+      //   provide: TranslateCompiler,
+      //   useClass: TranslateMessageFormatCompiler
+      // }
     })
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS,
 })
 export class MainModule {
-  static forRoot() { 
+  static forRoot(): ModuleWithProviders<MainModule> {
     return {
-      ngModule: MainModule,
-      providers: [ GoogleBooksService, BooksService, BooksStore, BooksQuery, LayoutService, LayoutStore, LayoutQuery ],
+        ngModule: MainModule,
+        providers: [GoogleBooksService, BooksService, BooksStore, BooksQuery, LayoutService, LayoutStore, LayoutQuery],
     };
-  }
+}
 }

@@ -20,7 +20,7 @@ export const COMPONENTS = [LoginPageComponent, LoginFormComponent];
   exports: COMPONENTS
 })
 export class AuthModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<RootAuthModule> {
     return {
       ngModule: RootAuthModule,
       providers: [
