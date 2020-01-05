@@ -128,7 +128,7 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "baseHref": "ng9-akita-books-store",
+            "baseHref": "https://maxruby.github.io/ng9-akita-books-store/",
             "repo": "https://github.com/maxruby/ng8-akita-books-store",
             "branch": "deploy",
             "name": "Maximiliano Suster",
