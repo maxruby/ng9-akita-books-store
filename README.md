@@ -95,6 +95,14 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
+## Deployment
+
+The application is deployed to GitHub pages at https://maxruby.github.io/ng9-akita-books-store/login as follows:
+
+```
+npn run deploy
+```
+
 ## References
 - https://angular.io
 - https://material.angular.io/
@@ -123,9 +131,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 **angular 9**
 - https://next.angular.io/guide/updating-to-version-9
 - https://medium.com/grapecity/what-to-expect-in-angular-9-a82810069000
-- 
-
-## Todo
 
 **deployment**
 - https://github.com/angular-schule/angular-cli-ghpages
+
+## Todo
+
