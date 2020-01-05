@@ -1,0 +1,15 @@
+{
+  "sidenav": {
+      "view_collection_tab_title": "My Collection",
+      "find_book_tab_title": "Browse Books",
+      "sign_in_tab_title": "Sign In",
+      "sign_out_tab_title": "Sign out"
+  },
+  "toolbar": {
+    "title": "Book Collection"
+  },
+  "not-found": {
+    "message": "Hey! It looks like this page doesn't exist yet.",
+    "redirect": "Take Me Home"
+  }
+}
